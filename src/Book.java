@@ -1,3 +1,9 @@
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public class Book {
@@ -16,11 +22,12 @@ public class Book {
 
 	}
 
-	protected Book( int bookID, String bookName) {
+	protected Book( int bookID, String bookName) throws IOException {
 		this.bookID = bookID;
 		this.bookName = bookName;
 		this.bookStatus = true;
 		books.add(this);
+		unosUFile(this.bookID, this.bookName);
 		}
 	
 	// provjerava da li je knjiga dostupna
@@ -80,7 +87,27 @@ public class Book {
 	public void setBookName(String bookName) {
 		this.bookName = bookName;
 	}
+public static void kreirajFile() {
+		
+		java.io.File file = new java.io.File("ListaKnjiga.txt");
+}
+public void unosUFile(int brojKnjige, String nazivKnjige) throws IOException {
 	
+	try(FileWriter unos = new FileWriter("ListaKnjiga.txt", true);
+		    BufferedWriter buffer = new BufferedWriter(unos);
+		    PrintWriter out = new PrintWriter(buffer))
+		{
+		out.println(brojKnjige + " " + nazivKnjige);
+		out.close();
+		buffer.close();
+		unos.close();
+		}		  
+}
 
+public static void izbrisiFile() throws IOException {
+	
+	Files.deleteIfExists(Paths.get("C:\\Users\\User\\eclipse-workspace\\Biblioteka\\ListaKnjiga.txt"));
+	
+}
 
 }

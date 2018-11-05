@@ -1,9 +1,10 @@
+import java.io.IOException;
 
 public class NewBook extends Book {
 
 	// Kreiranje knjige i uslovi
 
-		public void kreirajKnjigu(int bookId, String bookName) {
+		public void kreirajKnjigu(int bookId, String bookName)  throws IOException {
 			if (potvrdaBrojaKnjige(bookId)) {
 				Account knjiga = new Account(bookId,bookName);
 				System.out.println("Knjiga je dodana u bazu.");
