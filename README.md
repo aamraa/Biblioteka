@@ -1,6 +1,7 @@
 A simple Library application.
 
 The application offers the following services:
+
 • Creating an account
 • Creating books
 • Raising books from a library for a specific period of time
